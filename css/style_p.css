@@ -1,0 +1,137 @@
+body{
+    overflow: hidden;
+}
+
+
+.navbar span{
+    color: #fff;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.navbar span:hover{
+    color: rgba(255, 255, 255, 0.79);
+    cursor: pointer;
+}
+
+.search button:hover{
+    color: #fff;
+}
+
+  .navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+      transition: .2s;
+}
+
+    .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255,255,255,1);
+}
+
+.main-title{
+    font-size: 2rem;
+}
+
+.text-main h1{
+    font-weight: 350;
+    font-size: 1.7rem;
+}
+
+.card-body{
+    color: #3b3131;
+}
+
+
+.text-main p{
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+ .slick-prev:before,
+      .slick-next:before {
+        display: none;
+      }
+      
+      .slick-prev,
+      .slick-next{
+        display: none;
+      }
+
+
+.slick-slide {
+  text-align: center;
+  color: #419be0;
+  background: white;
+}
+      
+      .single-item img{
+          width: 100%;
+          object-fit: cover;
+         height: 230px;
+      }
+
+.back-to-top {
+ position: fixed;
+ bottom: 100px;
+ right: 80px;
+ transform: translate(-50%, -50%);
+    z-index: 6;
+    display: none;
+}
+
+.back-to-top-in{
+    position: absolute;
+     width: 60px;
+     height: 60px;
+     color: #fff;
+     text-align: center;
+     border-radius: 50%;
+    background: #007bff;
+    font-size: 25px;
+    transition: .2s;
+}
+
+.back-to-top-in:hover{
+    background: #045dbc;
+
+}
+
+.footer{
+    background: #007bff;
+    color: #fff;
+}
+
+.footer h2{
+    
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.footer span{
+    display:inline-block;
+    border-bottom:2px solid #fff;
+    padding-bottom:10px;
+   
+}
+
+.footer a{
+    color: #fff;
+}
+
+.footer i:hover{
+    transition: .2s;
+    color: rgba(255, 255, 255, 0.78);
+}
+.single-item button{
+    left: 0;
+    right: 0;
+}
+.social{
+    font-size: 1.5rem;
+}
+
+.fix-footer {
+    background: #007bff;
+    position: absolute;
+    height: 25px;
+    width: 100%;
+}

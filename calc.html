@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Рассчет</title>
+  		<meta name="keywords" content="...">
+		<meta name="description" content="ключевые слова для посика страницы, теги">
+		<meta name="author" lang="ru" content="Илья Алексеевич(авторство)">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="cssforportfoli/fonts.css">
+        <link rel="stylesheet" href="cssforportfoli/reset.css">
+		<link rel="stylesheet" href="cssforportfoli/style_calc_v1.07.css">
+		<link rel="stylesheet" href="cssforportfoli/select_s.css">
+	</head>
+	<body>
+   <div class="input-k">
+     <div class="step-k" id="nazad"><img src="img/icons8-nazad.png"><p style="margin-top: -46px; margin-left: 45px; text-align: left;">Назад</p></div>
+     <br>
+      <p>Обязательные отчисления:</p>
+       <input type="text" id="ObOtch-k" value="0.302">
+       <p>Накладные расходы(ФОТ):</p>
+       <input type="text" id="NakRas-k" value="1.7">
+       <p>Прибыль:</p>
+       <input type="text" id="Pribl-k" value="0.16">
+   </div>
+   <div class="buttons">
+     <input type="text" class="input">
+      <div class="vivod" id="vivod"><p></p></div>
+       <button class="button" value="1">1</button>
+       <button class="button" value="2">2</button>
+       <button class="button" value="3">3</button>
+       <button class="button" value="4">4</button>
+       <button class="button" value="5">5</button>
+       <button class="button" value="6">6</button>
+       <button class="button" value="7">7</button>
+       <button class="button" value="8">8</button>
+       <button class="button" value="9">9</button>
+       <button class="button" value="0">0</button>
+       <button class="button" value=".">.</button>
+       <button id="button_del" >c</button>
+    
+       <button id="finish" class="button-end">готово</button>
+       <p id="change">Изменить</p>
+        <p id="change_s">Выбрать</p>
+        <div class="selector">
+                    <p id="Organ">Организации</p>
+					<p id="Material">Материалы</p>
+					<p id="SpecOb">Спецобор.</p>
+					<p id="FOT">ФОТ</p>
+					<p id="Proch">Прочие</p>
+      </div>
+       <div class="vivod-finaly">
+            <p id="Organ_i"></p>
+            <p id="Material_i"></p>
+            <p id="SpecOb_i"></p>
+            <p id="Fond"></p>
+            <p id="OsFond"></p>
+            <p id="DopFond"></p>
+            <p id="Oboch"></p>
+            <p id="NakRas"></p>
+            <p id="Proch_i"></p>
+            <p id="SebeSt"></p>
+            <p id="SebeSt_full"></p>
+            <p id="Pribl"></p>
+            <p id="Finish_schet"></p>
+       </div>
+   </div>
+  
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        
+        var Material_b = '', SpecOb_b = '', buttonval = '', Proch_b = '', Organ_b = '';
+        
+        function Select_S(id){
+            switch (id) {
+          case 'Material':
+            return 'Материалы';
+            break;
+          case 'SpecOb':
+            return 'Спецобор.';
+            break;
+          case 'FOT':
+            return 'ФОТ';
+            break;
+          case 'Proch':
+            return 'Прочие';
+            break;
+          case 'Organ':
+            return 'Организации';
+            break;
+          default:
+            alert( 'Что-то пошло не так' );
+            }
+        }
+        
+        function Select_Z(id){
+            switch (id) {
+          case 'Material':
+            return Material_b;
+            break;
+          case 'SpecOb':
+            return SpecOb_b;
+            break;
+          case 'FOT':
+            return buttonval;
+            break;
+          case 'Proch':
+            return Proch_b;
+            break;
+          case 'Organ':
+            return Organ_b;
+            break;
+          default:
+            alert( 'Что-то пошло не так' );
+            }
+        }
+        
+        function Del_S(id){
+            id = id.substring(0, id.length - 1);
+            $('#vivod p').text(id);
+            return id;
+        }
+        
+       /* case 'Organ':
+            Organ_b += $(this).val();
+            $('#vivod p').text(Organ_b);
+            $('#Organ').text('Организации: ' + Organ_b);
+            break;*/
+        
+        
+        function Add_Z(Name, name_add){
+            var name_text = Select_S(Name);
+            //alert(name_text);
+            $('#vivod p').text(name_add);
+            $('#'+Name).text(name_text + ': ' + name_add);
+        }
+       
+        
+        
+        $('#change').click(function(){
+            $('.input-k').animate({ height: 'toggle', opacity: 'toggle', width: 'toggle' }, 200);
+    });
+        
+        $('#nazad').click(function(){
+           $('.input-k').animate({ height: 'toggle', opacity: 'toggle', width: 'toggle' }, 200);
+          //  $('.buttons').animate({ opacity: 'toggle'}, 250);
+
+    });
+        
+             $('#change_s').click(function(){
+            $('.selector').animate({ opacity: 'toggle' }, 200);
+           // $('.buttons').animate({ opacity: 'toggle'}, 250);
+       
+
+    });
+    
+        </script>
+        
+        <script>
+
+</script>
+<script>
+    
+   // $('.button, #button_del').css('height', $('.button').width());
+    
+     var choise_s = "FOT";
+           $('.selector p').click(function(){
+            choise_s = Select_S(this.id);
+            $('#change_s').text(choise_s);
+               $('.selector').fadeOut(200);
+               choise_s = Select_Z(this.id);
+               $('#vivod p').text(choise_s);
+               choise_s = this.id;
+               //alert(choise_s);
+    });
+    
+     $('.button').click(function(){
+        
+        // buttonval += $(this).val();
+        // $('#vivod p').text(buttonval);
+         
+         
+            switch (choise_s) {
+          case 'Material':
+            Material_b += $(this).val();
+            Add_Z('Material', Material_b);
+            break;
+          case 'SpecOb':
+            SpecOb_b += $(this).val();
+            Add_Z('SpecOb', SpecOb_b);
+            break;
+          case 'FOT':
+            buttonval += $(this).val();
+            Add_Z('FOT', buttonval);
+            break;
+          case 'Proch':
+            Proch_b += $(this).val();
+            Add_Z('Proch', Proch_b);
+            break;
+          case 'Organ':
+            Organ_b += $(this).val();
+            Add_Z('Organ', Organ_b);
+            break;
+          default:
+            alert( 'Что-то пошло не так' );
+            }
+         
+         //alert(Number(buttonval));
+         
+
+    });
+     $('#button_del').click(function(){
+        // buttonval = buttonval.substring(0, buttonval.length - 1);
+        // $('#vivod p').text(buttonval);
+        
+         
+         switch (choise_s) {
+          case 'Material':
+            Material_b = Del_S(Material_b);
+            $('#Material').text('Материалы: ' + Material_b);
+            break;
+          case 'SpecOb':
+            SpecOb_b = Del_S(SpecOb_b);
+            $('#SpecOb').text('Спецобор.: ' + SpecOb_b);
+            break;
+          case 'FOT':
+            buttonval = Del_S(buttonval);
+            $('#FOT').text('ФОТ: ' + buttonval);
+            break;
+          case 'Proch':
+            Proch_b = Del_S(Proch_b);
+            $('#Proch').text('Прочие: ' + Proch_b);
+            break;
+          case 'Organ':
+            Organ_b = Del_S(Organ_b);
+            $('#Organ').text('Организации: ' + Organ_b);
+            break;
+          default:
+            alert( 'Что-то пошло не так' );
+            }
+         
+
+    });
+     $('#finish').click(function(){
+         
+         var errors = "";
+         
+         if (buttonval.indexOf('..') != -1 || Material_b.indexOf('..') != -1 || SpecOb_b.indexOf('..') != -1 || Proch_b.indexOf("..") != -1 || Organ_b.indexOf("..") != -1 ) {
+            errors = "Данные не прошли валидацию";
+        }
+         
+        if( buttonval.length == 0 && Material_b.length == 0 && SpecOb_b.length == 0 && Proch_b.length == 0 && Organ_b.length == 0){
+            errors = "Введите хотя бы одно значение";
+        }
+        if (buttonval.substring(0, 1) == "." && buttonval.length == 1) {
+            errors = "ФОТ введен некорректно";
+        }
+        if (Material_b.substring(0, 1) == "." && Material_b.length == 1) {
+            errors = "Материалы введены некорректно";
+        }
+        if (SpecOb_b.substring(0, 1) == "." && SpecOb_b.length == 1) {
+            errors = "Спецматериалы введены некорректно";
+        }
+        if (Proch_b.substring(0, 1) == "." && Proch_b.length == 1) {
+            errors = "Прочее введено некорректно";
+        }
+        if (Organ_b.substring(0, 1) == "." && Organ_b.length == 1) {
+            errors = "Организации введены некорректно";
+        }
+         
+         if (errors.length == 0){
+             
+         
+         
+         $('.selector').fadeOut(200);
+         
+         if ($(window).width() >= 1206){
+             buttonval = $('.input').val();
+         }
+         
+         var ObOch_k = $('#ObOtch-k').val();
+         var NakRas_k = $('#NakRas-k').val();
+         var Pribl_k = $('#Pribl-k').val();
+         
+         $('.vivod-finaly').hide();
+         $('#Material_i').text('Материалы: ' + Number(Material_b).toFixed(2));
+         $('#SpecOb_i').text('Спецобор.: ' + Number(SpecOb_b).toFixed(2));
+         $('#Proch_i').text('Прочее: ' + Number(Proch_b).toFixed(2));
+        $('#Fond').text('Фонд оплаты труда: ' + Number(buttonval).toFixed(2));
+         $('#Organ_i').text('Организации: ' + Number(Organ_b).toFixed(2));
+           
+           $('#OsFond').text('Основная З/П: ' + (Number(buttonval).toFixed(2)/ 1.096).toFixed(2));
+         
+         $('#DopFond').text('Доп З/П: ' + (Number(buttonval).toFixed(2)/ 1.096 * 0.096).toFixed(2));
+         
+         var ObOch = (Number(buttonval) * Number(ObOch_k)).toFixed(2);
+         $('#Oboch').text('Обязательные отчисления: ' + ObOch);
+         
+         var NakRas = (Number(buttonval) * Number(NakRas_k)).toFixed(2);
+         $('#NakRas').text('Накладные расходы: ' + NakRas);
+         
+         var SebeSt = (Number(buttonval) + Number(ObOch) + Number(NakRas)).toFixed(2);
+         
+         if( Proch_b.length > 0){
+             SebeSt = (Number(SebeSt) + Number(Proch_b)).toFixed(2);
+         }
+             
+         if( Material_b.length > 0){
+             SebeSt = (Number(SebeSt) + Number(Material_b)).toFixed(2);
+         }
+         
+         if( SpecOb_b.length > 0){
+             SebeSt = (Number(SebeSt) + Number(SpecOb_b)).toFixed(2);
+         }
+         
+         $('#SebeSt').text('Себестоимость собственных работ: ' + SebeSt);
+         
+         var SebeSt_full = Number(SebeSt).toFixed(2);
+             
+         if( Organ_b.length > 0){
+             SebeSt_full = (Number(SebeSt_full) + Number(Organ_b)).toFixed(2);
+         }
+         
+         $('#SebeSt_full').text('Полная себестоимсоть работ: ' + SebeSt_full);
+         
+         if ( Material_b.length > 0 && SpecOb_b.length > 0){
+             var Pribl = (Number(SebeSt) - (Number(Material_b) + Number(SpecOb_b))) * Number(Pribl_k) + (Number(SpecOb_b) * 0.01);
+         }
+         else if(SpecOb_b.length > 0){
+             var Pribl = (Number(SebeSt) - Number(SpecOb_b)) * Number(Pribl_k) + (Number(SpecOb_b) * 0.01);
+        }
+         else{
+                 var Pribl = (Number(SebeSt) * Number(Pribl_k)).toFixed(2);
+             }
+         
+             
+         $('#Pribl').text('Прибыль: ' + Number(Pribl).toFixed(2));
+         
+         var Finish_schet = (Number(SebeSt) + Number(Pribl)).toFixed(2);
+         $('#Finish_schet').text('Цена работы: ' + Finish_schet);
+         
+         
+         
+         buttonval = '';
+         Material_b = ''; 
+         SpecOb_b = ''; 
+         Proch_b = '';
+          Organ_b = '';
+         $('#vivod p').text('');
+         
+         $('.vivod-finaly').fadeIn(350);
+         
+         $('#Material').text('Материалы'); 
+         $('#SpecOb').text('Спецобор.');
+         $('#FOT').text('ФОТ');
+         $('#Proch').text('Прочие');
+         $('#Organ').text('Организации');
+             }
+         else{
+             alert(errors);
+         }
+    });
+        </script>
+        
+ </body>
+</html>

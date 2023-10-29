@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "/www/kkmt-portfolio.regela.ru/webstat"
+AuthUserFile /var/www/vh147395/data/etc/46137495.passwd
+DirectoryIndex index.html
+<Limit GET POST>
+	require valid-user
+</Limit>

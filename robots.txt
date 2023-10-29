@@ -1,0 +1,10 @@
+Host: http://onlinesborka.mcdir.ru
+
+User-agent: *
+Disallow: /include/
+Disallow: /css/
+Disallow: /js/
+Disallow: /accountinfo_port.php
+Disallow: /signup.php
+Disallow: /cant_login5.php
+Sitemap: http://onlinesborka.mcdir.ru/sitemap.xml
